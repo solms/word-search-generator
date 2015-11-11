@@ -43,13 +43,15 @@ function generateWordSearch(){
 	// Place each word
 	for(var i=0; i<words.length; i++)
 		placeWord(words[i]);
+	// Display the word search
+	displayWordSearch();
 }
 
 function placeWord(word){
 	// Guess a random starting position at least
 	// word.length from a side
 	var l = word.length;
-	var starting_pos = [
+	var pos = [
 		Math.floor(Math.random()*(n-2*l))+l,
 		Math.floor(Math.random()*(n-2*l))+l
 	];
@@ -64,10 +66,34 @@ function placeWord(word){
 	var current = '';
 	for(var i=0; i<l; i++){
 		if(direction == 0)
-			current = word_search[starting_pos[0]][starting_pos[1]+i];
+			current = word_search[pos[0]][pos[1]+i];
 		else
-			current = word_search[starting_pos[0]+i][starting_pos[1]];
+			current = word_search[pos[0]+i][pos[1]];
 		if(current != '')
 		obstruction = true;			
 	}
+
+	// Retry placement if an obstruction is met
+	if(obstruction)
+		placeWord(word);
+	// Otherwise place the word
+	else{
+		for(var i=0; i<l; i++){
+			if(direction == 0)
+				word_search[[pos[0]][pos[1]+i]] = word[i];
+			else
+				word_search[[pos[0]+i][pos[1]]] = word[i];
+		}
+	}
+}
+
+function displayWordSearch(){
+	var ws_html = "";
+	for(var i=0; i<n; i++){
+		for(var j=0; j<n; j++){
+			ws_html += word_search[i][j];
+		}
+		ws_html += '<br>'
+	}
+	$('#word-search').html(ws_html);
 }
