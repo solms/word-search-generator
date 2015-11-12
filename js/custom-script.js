@@ -2,7 +2,7 @@ var alphabet = ['A','B','C','D','E','F','G','H','I',
 				'J','K','L','M','N','O','P','Q','R',
 				'S','T','U','V','W','X','Y','Z'];
 var words = [];
-var n = 100;
+var n = 25;
 var word_search = [];
 
 $(document).ready(function(){
@@ -37,12 +37,14 @@ function generateWordSearch(){
 	// Initialise an nxn array with ''s
 	var row = [];
 	for(var i=0; i<n; i++)
-		row.push('');
+		row.push('.');
 	for(var i=0; i<n; i++)
 		word_search.push(row);
 	// Place each word
-	for(var i=0; i<words.length; i++)
+	for(var i=0; i<words.length; i++){
 		placeWord(words[i]);
+	}
+		
 	// Display the word search
 	displayWordSearch();
 }
@@ -69,8 +71,8 @@ function placeWord(word){
 			current = word_search[pos[0]][pos[1]+i];
 		else
 			current = word_search[pos[0]+i][pos[1]];
-		if(current != '')
-		obstruction = true;			
+		if(current != '.')
+			obstruction = true;			
 	}
 
 	// Retry placement if an obstruction is met
@@ -79,10 +81,14 @@ function placeWord(word){
 	// Otherwise place the word
 	else{
 		for(var i=0; i<l; i++){
-			if(direction == 0)
-				word_search[[pos[0]][pos[1]+i]] = word[i];
+			if(direction == 0){
+				word_search[pos[0]][pos[1]+i] = word[i];
+
+				console.log('Place word['+i+']('+word[i]+' of '+word+') at '+pos[0]+','+(pos[1]+i));
+				console.log('word_search[pos[0]][pos[1]+i]: ' + word_search[pos[0]][pos[1]+i]);
+			}
 			else
-				word_search[[pos[0]+i][pos[1]]] = word[i];
+				word_search[pos[0]+i][pos[1]] = word[i];
 		}
 	}
 }
