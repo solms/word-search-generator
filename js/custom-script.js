@@ -2,14 +2,27 @@ var alphabet = ['A','B','C','D','E','F','G','H','I',
 				'J','K','L','M','N','O','P','Q','R',
 				'S','T','U','V','W','X','Y','Z'];
 var words = [];
+var word_pos;
 var n = 25;
 var word_search;
+var title = '';
 
 $(document).ready(function(){
  	$('#continue').on('click', function(){
  		$('#welcome').hide();
- 		$('#get-words').fadeIn('slow');
+ 		$('#get-title').fadeIn('slow');
  	});
+ 	// Read enter keypress for title enter textbox
+ 	$(document).on('keypress', '#get-title #title', function(e) {
+        if ( e.keyCode == 13 ) {  // detect the enter key
+            title = $('#get-title #title').val().toUpperCase();
+			if(title != ''){
+				$('#get-title').hide();
+ 				$('#get-words').fadeIn('slow');
+			}
+        }
+    });
+
 	// Read enter keypress for word enter textbox
  	$(document).on('keypress', '#get-words #word', function(e) {
         if ( e.keyCode == 13 ) {  // detect the enter key
@@ -53,6 +66,7 @@ function generateWordSearch(){
 	}
 
 	// Place each word
+	word_pos = new Array(words.length);
 	for(var i=0; i<words.length; i++){
 		placeWord(words[i]);
 	}
@@ -92,10 +106,12 @@ function placeWord(word){
 		// Place the word if no collision
 		if(!collision){
 			for(var i=0; i<len; i++){
-				if(direction == 0)
+				if(direction == 0){
 					word_search[start.y][start.x+i] = word[i];
-				else
+				}
+				else{
 					word_search[start.y+i][start.x] = word[i];
+				}					
 			}
 			success = true;
 		}
@@ -123,4 +139,6 @@ function displayWordSearch(){
 		ws_html += '<br>'
 	}
 	$('#word-search').html(ws_html);
+	$('#word-search-container').show();
+	$('#title').text(title);
 }

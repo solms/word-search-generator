@@ -6,6 +6,11 @@ h3{
 	margin: 10px 0px 0px 0px;
 }
 
+.container{
+	margin: 0 auto;
+	width: 500px;
+}
+
 .topcoat-button--large{
 	margin: 5px;
 }
@@ -16,13 +21,9 @@ h3{
 	font-size: 20px;
 }
 
-#welcome{
-	margin: 0 auto;
-	width: 500px;
-}
-
 #entered-words{
 	margin: 0 auto;
+	margin-bottom: 15px;
 	width: 350px;
 	border-style: solid;
 	border-radius: 5px;

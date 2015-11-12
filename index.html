@@ -9,25 +9,32 @@
 	<link href='css/custom-styles.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<h1>Word Search Generator</h1>
-	<div id="welcome">
-		<h2>Welcome!</h2>
-		<p>This website will help you to easily create word searches for whatever use you see fit.</p>
-		<p>Personally, I have found word searches to be a valuable teaching tool - specifically for helping younger elementary school students drill target vocabulary through repitition.</p>
-		<button class="topcoat-button--large--cta" id="continue">Continue</button>
+	<h1 id="title">Word Search Generator</h1>
+	<div class="container">
+		<div id="welcome">
+			<h2>Welcome!</h2>
+			<p>This website will help you to easily create word searches for whatever use you see fit.</p>
+			<p>Personally, I have found word searches to be a valuable teaching tool - specifically for helping younger elementary school students drill target vocabulary through repitition.</p>
+			<button class="topcoat-button--large--cta" id="continue">Continue</button>
+		</div>
+		<div id="get-title" hidden="true">
+			<p>Enter a title for your word search and press the 'enter' key.</p>
+			<input type="text" class="topcoat-text-input--large" value="" placeholder="Word search title" id="title">
+		</div>
+		<div id="get-words" hidden="true">
+			<p>Please your chosen words one for one, followed by the 'enter' key, and click the button below when you are done.</p>
+			<input type="text" class="topcoat-text-input--large" value="" placeholder="Enter a word" id="word">
+			<br>
+			<button class="topcoat-button--large" id="finished">Finished</button>
+		</div>
+		<div id="entered-words" hidden="true">
+			<h3>List of Words</h3>
+			<div id="words-list"></div>
+		</div>
+		<div id="word-search-container" hidden="true">
+			<div id="word-search"></div>
+		</div>
 	</div>
-	<div id="get-words" hidden="true">
-		<p>Please your chosen words one for one, followed by the 'enter' key, and click the button below when you are done.</p>
-		<input type="text" class="topcoat-text-input--large" value="" placeholder="Enter a word" id="word">
-		<br>
-		<button class="topcoat-button--large" id="finished">Finished</button>
-	</div>
-	<div id="entered-words" hidden="true">
-		<h3>List of Words</h3>
-		<div id="words-list"></div>
-	</div>
-	<div id="word-search"></div>
-
 	<!-- jQuery -->
   	<script src="js/jquery.js"></script>
 	<!-- Import the custom JS script -->
