@@ -52,20 +52,14 @@ function generateWordSearch(){
 }
 
 function placeWord(word){
-	console.log('\n\nWord to place: ' + word);
-	console.log('Choosing a random start coordinate...');
 	var len = word.length;
 	var start = {
 		y: Math.floor(Math.random()*(n-len)),
 		x: Math.floor(Math.random()*(n-len))
 	};
-	console.log('Start coordinates: [' + start.y + ',' + start.x + ']');
-	console.log('Choosing a random direction...');
 	// 0: left to right
 	// 1: top to bottom
 	var direction = Math.floor(Math.random()*2);
-	console.log('Direction: ' + direction);
-	console.log('Placing the word now (without checking for collisions)...');
 	for(var i=0; i<len; i++){
 		if(direction == 0)
 			word_search[start.y][start.x+i] = word[i];
