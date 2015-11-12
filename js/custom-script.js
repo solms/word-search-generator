@@ -3,6 +3,7 @@ var alphabet = ['A','B','C','D','E','F','G','H','I',
 				'S','T','U','V','W','X','Y','Z'];
 var words = [];
 var word_pos;
+word_count = 0;
 var n = 25;
 var word_search;
 var title = '';
@@ -41,6 +42,18 @@ $(document).ready(function(){
 	$('#get-words #finished').on('click', function(){
 		$('#get-words').hide();
 		generateWordSearch();
+	});
+
+	$('#show-secrets').on('click', function(){
+		if($('#show-secrets').text() == 'Show secret words'){
+			$('.secret-word').css('color', 'blue');
+			$('#show-secrets').text('Hide secret words');	
+		}
+		else{
+			$('.secret-word').css('color', 'black');
+			$('#show-secrets').text('Show secret words');
+		}
+			
 	});
 });
 
@@ -107,12 +120,13 @@ function placeWord(word){
 		if(!collision){
 			for(var i=0; i<len; i++){
 				if(direction == 0){
-					word_search[start.y][start.x+i] = word[i];
+					word_search[start.y][start.x+i] = ['<span class="secret-word">'+word[i]+'</span>'];
 				}
 				else{
-					word_search[start.y+i][start.x] = word[i];
+					word_search[start.y+i][start.x] = ['<span  class="secret-word">'+word[i]+'</span>'];
 				}					
 			}
+			
 			success = true;
 		}
 	}
