@@ -46,11 +46,17 @@ $(document).ready(function(){
 
 	$('#show-secrets').on('click', function(){
 		if($('#show-secrets').text() == 'Show secret words'){
-			$('.secret-word').css('color', 'blue');
+			$('.secret-word').css({
+			      'color': '#F26C4F',
+			      'font-size': '22px'
+			    });
 			$('#show-secrets').text('Hide secret words');	
 		}
 		else{
-			$('.secret-word').css('color', 'black');
+			$('.secret-word').css({
+			      'color': '#1B325F',
+			      'font-size': '20px'
+			    });
 			$('#show-secrets').text('Show secret words');
 		}
 			
