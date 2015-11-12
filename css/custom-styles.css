@@ -2,9 +2,14 @@ body{
 	text-align: center;
 }
 
+h3{
+	margin: 10px 0px 0px 0px;
+}
+
 #word-search{
 	font-family: 'Inconsolata', ;
 	font-weight: bold;
+	font-size: 20px;
 }
 
 #entered-words{

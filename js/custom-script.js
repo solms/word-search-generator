@@ -8,17 +8,19 @@ var word_search;
 $(document).ready(function(){
 	$('#entered-words').hide();
 
-	$('#get-words #submit').on('click', function(){
-		var word = $('#get-words #word').val().toUpperCase();
-		if(words.indexOf(word) == -1 && word != ''){
-			words.push(word);
-			$('#get-words #word').val('');
-			refreshWordsList();
-		}
-		else{
-			alert("You've already entered that word!");
-		}		
-	});
+	 $(document).on('keypress', '#get-words #word', function(e) {
+        if ( e.keyCode == 13 ) {  // detect the enter key
+            var word = $('#get-words #word').val().toUpperCase();
+			if(words.indexOf(word) == -1 && word != ''){
+				words.push(word);
+				$('#get-words #word').val('');
+				refreshWordsList();
+			}
+			else{
+				alert("You've already entered that word!");
+			}	
+        }
+    });
 
 	$('#get-words #finished').on('click', function(){
 		$('#get-words').hide();
@@ -39,11 +41,11 @@ function refreshWordsList(){
 }
 
 function generateWordSearch(){
-	// Initialise an nxn array with ''s
+	// Initialise an nx2n array with ''s
 	word_search = new Array(n);
 	for (var i = 0; i < n; i++) {
 		word_search[i] = [];
-		for(var j=0; j<n; j++)
+		for(var j=0; j<2*n; j++)
 			word_search[i].push('.');
 	}
 
@@ -67,7 +69,7 @@ function placeWord(word){
 		var len = word.length;
 		var start = {
 			y: Math.floor(Math.random()*(n-len)),
-			x: Math.floor(Math.random()*(n-len))
+			x: Math.floor(Math.random()*(2*n-len))
 		};
 		// Determine a random direction
 		// 0: left to right
@@ -100,7 +102,7 @@ function placeWord(word){
 
 function hideLetters(){
 	for(var i=0; i<n; i++){
-		for(var j=0; j<n; j++){
+		for(var j=0; j<2*n; j++){
 			if(word_search[i][j] == '.'){
 				word_search[i][j] = 
 					alphabet[Math.floor(Math.random()*alphabet.length)];
@@ -112,7 +114,7 @@ function hideLetters(){
 function displayWordSearch(){
 	var ws_html = "";
 	for(var i=0; i<n; i++){
-		for(var j=0; j<n; j++){
+		for(var j=0; j<2*n; j++){
 			ws_html += word_search[i][j];
 		}
 		ws_html += '<br>'
