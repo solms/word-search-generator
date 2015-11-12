@@ -4,7 +4,7 @@ var alphabet = ['A','B','C','D','E','F','G','H','I',
 var words = [];
 var word_pos;
 word_count = 0;
-var n = 25;
+var n = 10;
 var word_search;
 var title = '';
 
@@ -126,10 +126,10 @@ function placeWord(word){
 		if(!collision){
 			for(var i=0; i<len; i++){
 				if(direction == 0){
-					word_search[start.y][start.x+i] = ['<span class="secret-word">'+word[i]+'</span>'];
+					word_search[start.y][start.x+i] = ['<span class="secret-word"> '+word[i]+'</span>'];
 				}
 				else{
-					word_search[start.y+i][start.x] = ['<span  class="secret-word">'+word[i]+'</span>'];
+					word_search[start.y+i][start.x] = ['<span  class="secret-word"> '+word[i]+'</span>'];
 				}					
 			}
 			
@@ -144,7 +144,7 @@ function hideLetters(){
 		for(var j=0; j<2*n; j++){
 			if(word_search[i][j] == '.'){
 				word_search[i][j] = 
-					alphabet[Math.floor(Math.random()*alphabet.length)];
+					' ' + alphabet[Math.floor(Math.random()*alphabet.length)];
 			}
 		}
 	}
