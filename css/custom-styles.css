@@ -6,10 +6,19 @@ h3{
 	margin: 10px 0px 0px 0px;
 }
 
+.topcoat-button--large{
+	margin: 5px;
+}
+
 #word-search{
 	font-family: 'Inconsolata', ;
 	font-weight: bold;
 	font-size: 20px;
+}
+
+#welcome{
+	margin: 0 auto;
+	width: 500px;
 }
 
 #entered-words{

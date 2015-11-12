@@ -6,9 +6,12 @@ var n = 25;
 var word_search;
 
 $(document).ready(function(){
-	$('#entered-words').hide();
-
-	 $(document).on('keypress', '#get-words #word', function(e) {
+ 	$('#continue').on('click', function(){
+ 		$('#welcome').hide();
+ 		$('#get-words').fadeIn('slow');
+ 	});
+	// Read enter keypress for word enter textbox
+ 	$(document).on('keypress', '#get-words #word', function(e) {
         if ( e.keyCode == 13 ) {  // detect the enter key
             var word = $('#get-words #word').val().toUpperCase();
 			if(words.indexOf(word) == -1 && word != ''){
@@ -37,7 +40,7 @@ function refreshWordsList(){
 	}
 		
 	$('#entered-words #words-list').html('<p>'+display_list+'</p>');
-	$('#entered-words').show('fast');
+	$('#entered-words').fadeIn('fast');
 }
 
 function generateWordSearch(){

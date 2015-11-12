@@ -10,14 +10,19 @@
 </head>
 <body>
 	<h1>Word Search Generator</h1>
-	<div id="get-words">
+	<div id="welcome">
+		<h2>Welcome!</h2>
+		<p>This website will help you to easily create word searches for whatever use you see fit.</p>
+		<p>Personally, I have found word searches to be a valuable teaching tool - specifically for helping younger elementary school students drill target vocabulary through repitition.</p>
+		<button class="topcoat-button--large--cta" id="continue">Continue</button>
+	</div>
+	<div id="get-words" hidden="true">
 		<p>Please enter any word you wish to add below:</p>
 		<input type="text" class="topcoat-text-input--large" value="" placeholder="Enter a word" id="word">
-
 		<br>
 		<button class="topcoat-button--large" id="finished">Finished</button>
 	</div>
-	<div id="entered-words">
+	<div id="entered-words" hidden="true">
 		<h3>Words List</h3>
 		<div id="words-list"></div>
 	</div>
