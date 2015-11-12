@@ -2,7 +2,7 @@ var alphabet = ['A','B','C','D','E','F','G','H','I',
 				'J','K','L','M','N','O','P','Q','R',
 				'S','T','U','V','W','X','Y','Z'];
 var words = [];
-var n = 25;
+var n = 10;
 var word_search = [];
 
 $(document).ready(function(){
@@ -62,6 +62,7 @@ function placeWord(word){
 	// 0: left to right
 	// 1: top to bottom
 	var direction = Math.floor(Math.random()*2);
+	console.log('Direction: ' + direction);
 
 	// Check if there are any letters in the way in this direction
 	var obstruction = false;
@@ -76,17 +77,17 @@ function placeWord(word){
 	}
 
 	// Retry placement if an obstruction is met
-	if(obstruction)
-		placeWord(word);
+	if(obstruction){
+		//placeWord(word);
+		console.log("OBSTRUCTION!");
+	}
+		
 	// Otherwise place the word
 	else{
 		for(var i=0; i<l; i++){
-			if(direction == 0){
+			console.log(i);
+			if(direction == 0)
 				word_search[pos[0]][pos[1]+i] = word[i];
-
-				console.log('Place word['+i+']('+word[i]+' of '+word+') at '+pos[0]+','+(pos[1]+i));
-				console.log('word_search[pos[0]][pos[1]+i]: ' + word_search[pos[0]][pos[1]+i]);
-			}
 			else
 				word_search[pos[0]+i][pos[1]] = word[i];
 		}
@@ -95,6 +96,7 @@ function placeWord(word){
 
 function displayWordSearch(){
 	var ws_html = "";
+	console.log(word_search);
 	for(var i=0; i<n; i++){
 		for(var j=0; j<n; j++){
 			ws_html += word_search[i][j];
