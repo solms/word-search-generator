@@ -1,6 +1,9 @@
 <head>
 	<title>Word Search Generator</title>
-	<!-- Import font -->
+	
+	<!-- Import Top Coat -->
+	<link href='css/topcoat-desktop-light.min.css' rel='stylesheet' type='text/css'>
+	<!-- Import monospace font -->
 	<link href='https://fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
 	<!-- Import custom CSS -->
 	<link href='css/custom-styles.css' rel='stylesheet' type='text/css'>
@@ -9,9 +12,10 @@
 	<h1>Word Search Generator</h1>
 	<div id="get-words">
 		<p>Please enter any word you wish to add below:</p>
-		<input type="text" id="word">
+		<input type="text" class="topcoat-text-input--large" value="" placeholder="Enter a word" id="word">
+
 		<br>
-		<button id="finished">Finished</button>
+		<button class="topcoat-button--large" id="finished">Finished</button>
 	</div>
 	<div id="entered-words">
 		<h3>Words List</h3>
