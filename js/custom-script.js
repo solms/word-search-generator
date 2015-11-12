@@ -3,7 +3,7 @@ var alphabet = ['A','B','C','D','E','F','G','H','I',
 				'S','T','U','V','W','X','Y','Z'];
 var words = [];
 var n = 10;
-var word_search = [];
+var word_search;
 
 $(document).ready(function(){
 	$('#entered-words').hide();
@@ -35,11 +35,13 @@ function refreshWordsList(){
 
 function generateWordSearch(){
 	// Initialise an nxn array with ''s
-	var row = [];
-	for(var i=0; i<n; i++)
-		row.push('.');
-	for(var i=0; i<n; i++)
-		word_search.push(row);
+	word_search = new Array(n);
+	for (var i = 0; i < n; i++) {
+		word_search[i] = [];
+		for(var j=0; j<n; j++)
+			word_search[i].push('.');
+	}
+
 	// Place each word
 	for(var i=0; i<words.length; i++){
 		placeWord(words[i]);
@@ -50,53 +52,26 @@ function generateWordSearch(){
 }
 
 function placeWord(word){
-	// Guess a random starting position at least
-	// word.length from a side
-	var l = word.length;
-	var pos = [
-		Math.floor(Math.random()*(n-2*l))+l,
-		Math.floor(Math.random()*(n-2*l))+l
-	];
-
-	// Choose a random direction:
+	console.log('\n\nWord to place: ' + word);
+	console.log('Choosing a random start coordinate...');
+	var len = word.length;
+	var start = {
+		y: Math.floor((Math.random()*(n-len))+len),
+		x: Math.floor((Math.random()*(n-len))+len)
+	};
+	console.log('Start coordinates: [' + start.y + ',' + start.x + ']');
+	console.log('Choosing a random direction...');
 	// 0: left to right
 	// 1: top to bottom
 	var direction = Math.floor(Math.random()*2);
 	console.log('Direction: ' + direction);
-
-	// Check if there are any letters in the way in this direction
-	var obstruction = false;
-	var current = '';
-	for(var i=0; i<l; i++){
-		if(direction == 0)
-			current = word_search[pos[0]][pos[1]+i];
-		else
-			current = word_search[pos[0]+i][pos[1]];
-		if(current != '.')
-			obstruction = true;			
-	}
-
-	// Retry placement if an obstruction is met
-	if(obstruction){
-		//placeWord(word);
-		console.log("OBSTRUCTION!");
-	}
-		
-	// Otherwise place the word
-	else{
-		for(var i=0; i<l; i++){
-			console.log(i);
-			if(direction == 0)
-				word_search[pos[0]][pos[1]+i] = word[i];
-			else
-				word_search[pos[0]+i][pos[1]] = word[i];
-		}
-	}
+	//console.log('Placing the word now (without checking for collisions)...');
+	word_search[0][0] = 'x';
+	console.log(word_search);
 }
 
 function displayWordSearch(){
 	var ws_html = "";
-	console.log(word_search);
 	for(var i=0; i<n; i++){
 		for(var j=0; j<n; j++){
 			ws_html += word_search[i][j];
