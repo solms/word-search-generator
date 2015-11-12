@@ -1,10 +1,14 @@
+body{
+	text-align: center;
+}
+
 #word-search{
 	font-family: 'Inconsolata', ;
 	font-weight: bold;
 }
 
 #entered-words{
-	text-align: center;
+	margin: 0 auto;
 	width: 350px;
 	border-style: solid;
 	border-radius: 5px;
