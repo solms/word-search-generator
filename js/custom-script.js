@@ -4,7 +4,7 @@ var alphabet = ['A','B','C','D','E','F','G','H','I',
 var words = [];
 var word_pos;
 word_count = 0;
-var n = 10;
+var n = 15;
 var word_search;
 var title = '';
 
@@ -44,18 +44,17 @@ $(document).ready(function(){
 		generateWordSearch();
 	});
 
+	// Make the hidden words stand out
 	$('#show-secrets').on('click', function(){
 		if($('#show-secrets').text() == 'Show secret words'){
 			$('.secret-word').css({
-			      'color': '#F26C4F',
-			      'font-size': '22px'
+			      'color': '#F26C4F'
 			    });
 			$('#show-secrets').text('Hide secret words');	
 		}
 		else{
 			$('.secret-word').css({
-			      'color': '#1B325F',
-			      'font-size': '20px'
+			      'color': '#1B325F'
 			    });
 			$('#show-secrets').text('Show secret words');
 		}
