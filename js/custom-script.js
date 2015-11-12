@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	$('#get-words #submit').on('click', function(){
 		var word = $('#get-words #word').val().toUpperCase();
-		if(words.indexOf(word) == -1){
+		if(words.indexOf(word) == -1 && word != ''){
 			words.push(word);
 			$('#get-words #word').val('');
 			refreshWordsList();
@@ -22,16 +22,19 @@ $(document).ready(function(){
 
 	$('#get-words #finished').on('click', function(){
 		$('#get-words').hide();
-		$('#entered-words').hide();
 		generateWordSearch();
 	});
 });
 
 function refreshWordsList(){
 	var display_list = "";
-	for(var i=0; i<words.length; i++)
-		display_list += "<li>"+words[i]+"</li>";
-	$('#entered-words #words-list').html(display_list);
+	for(var i=0; i<words.length; i++){
+		display_list += words[i];
+		if(i != words.length-1)
+			display_list += ' | '
+	}
+		
+	$('#entered-words #words-list').html('<p>'+display_list+'</p>');
 	$('#entered-words').show('fast');
 }
 
