@@ -21,6 +21,8 @@ $(document).ready(function(){
 	});
 
 	$('#get-words #finished').on('click', function(){
+		$('#get-words').hide();
+		$('#entered-words').hide();
 		generateWordSearch();
 	});
 });
