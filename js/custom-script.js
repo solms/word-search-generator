@@ -52,20 +52,42 @@ function generateWordSearch(){
 }
 
 function placeWord(word){
-	var len = word.length;
-	var start = {
-		y: Math.floor(Math.random()*(n-len)),
-		x: Math.floor(Math.random()*(n-len))
-	};
-	// 0: left to right
-	// 1: top to bottom
-	var direction = Math.floor(Math.random()*2);
-	for(var i=0; i<len; i++){
-		if(direction == 0)
-			word_search[start.y][start.x+i] = word[i];
-		else
-			word_search[start.y+i][start.x] = word[i];
+	var success = false;
+	while(!success){
+		// Determine a random start coordinate
+		// (at least a word length from right or bottom)
+		var len = word.length;
+		var start = {
+			y: Math.floor(Math.random()*(n-len)),
+			x: Math.floor(Math.random()*(n-len))
+		};
+		// Determine a random direction
+		// 0: left to right
+		// 1: top to bottom
+		var direction = Math.floor(Math.random()*2);
+		// Check for collisions with other words
+		var collision = false;
+		var current = '';
+		for(var i=0; i<len; i++){
+			if(direction == 0)
+				current = word_search[start.y][start.x+i];
+			else
+				current = word_search[start.y+i][start.x];
+			if(current != '.')
+				collision = true;
+		}
+		// Place the word if no collision
+		if(!collision){
+			for(var i=0; i<len; i++){
+				if(direction == 0)
+					word_search[start.y][start.x+i] = word[i];
+				else
+					word_search[start.y+i][start.x] = word[i];
+			}
+			success = true;
+		}
 	}
+	
 }
 
 function displayWordSearch(){
