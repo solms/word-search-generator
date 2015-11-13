@@ -20,6 +20,7 @@ $(document).ready(function(){
 			if(title != ''){
 				$('#get-title').hide();
  				$('#get-words').fadeIn('slow');
+ 				$('#title').show();
 			}
         }
     });
@@ -59,6 +60,17 @@ $(document).ready(function(){
 			$('#show-secrets').text('Show secret words');
 		}
 			
+	});
+
+	// Show the contact container
+	$('#contact-link').on('click', function(){
+		$('#generator').hide();
+		$('#contact').show();
+	});
+	// Show the generator container
+	$('#generator-link').on('click', function(){
+		$('#contact').hide();
+		$('#generator').show();
 	});
 });
 

@@ -3,6 +3,8 @@
 	
 	<!-- Import Top Coat -->
 	<link href='css/topcoat-desktop-light.min.css' rel='stylesheet' type='text/css'>
+	<!-- Import Font Awesome -->
+	<link href="font-awesome/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 	<!-- Import custom CSS -->
 	<link href='css/custom-styles.css' rel='stylesheet' type='text/css'>
 </head>
@@ -10,12 +12,13 @@
 	<div id="heading-bar">
 		<ul>
 			<li><h2>Word Search Generator</h2></li>
-			<li><a href="http://solms.github.io/word-search-generator/">Home</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a id="generator-link" href="#">Generator</a></li>
+			<li><a id="contact-link" href="#">Contact</a></li>
+			<li><a id="reset-link" href="http://solms.github.io/word-search-generator/">[ Reset ]</a></li>
 		</ul>
 	</div>
-	<div class="container">
-		<h1 id="title"></h1>
+	<div class="container" id="generator">
+		<h1 id="title" hidden="true"></h1>
 		<div class="info-box" id="welcome">
 			<h2>Welcome!</h2>
 			<p>This website will help you to easily create word searches for whatever use you see fit.</p>
@@ -41,6 +44,17 @@
 			<div id="word-search"></div>
 		</div>
 	</div>
+
+	<!-- Contact page -->
+	<div class="container info-box" id="contact" hidden="true">
+		<h2>Contact Information</h2>
+		<h3><small>Please feel free to have a look at any of my social pages. Contact me if you find anything interesting!</small></h3>
+        <a href="http://freecodecamp.com/stykes" target="_blank" class="topcoat-button"><i class="fa fa-fire"></i> freeCodeCamp</a><br>
+        <a href="https://github.com/solms" target="_blank" class="topcoat-button"><i class="fa fa-github"></i> GitHub</a><br>
+        <a href="https://kr.linkedin.com/in/solmsdykman" target="_blank" class="topcoat-button"><i class="fa fa-linkedin-square"></i> LinkedIn</a><br>
+        <a href="https://twitter.com/Solms_" target="_blank" class="topcoat-button"><i class="fa fa-twitter"></i> Twitter</a><br>
+	</div>
+
 	<!-- jQuery -->
   	<script src="js/jquery.js"></script>
 	<!-- Import the custom JS script -->
