@@ -4,6 +4,7 @@ body{
 	background-image: url("../resources/letters.jpg");
 	color: #1B325F;
 	min-height: 100%;
+	font-family: 'Voltaire', sans-serif;
 }
 h3{
 	margin: 10px 0px 0px 0px;
