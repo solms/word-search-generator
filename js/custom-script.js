@@ -20,7 +20,8 @@ $(document).ready(function(){
 			if(title != ''){
 				$('#get-title').hide();
  				$('#get-words').fadeIn('slow');
- 				$('#title').show();
+ 				$('#title-heading').text(title);
+ 				$('#title-heading').show();
 			}
         }
     });
@@ -171,5 +172,4 @@ function displayWordSearch(){
 	}
 	$('#word-search').html(ws_html);
 	$('#word-search-container').show();
-	$('#title').text(title);
 }
