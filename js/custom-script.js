@@ -7,6 +7,7 @@ word_count = 0;
 var n = 15;
 var word_search;
 var title = '';
+var ws_html = "";
 
 $(document).ready(function(){
  	$('#continue').on('click', function(){
@@ -33,7 +34,7 @@ $(document).ready(function(){
 			if(words.indexOf(word) == -1 && word != ''){
 				words.push(word);
 				$('#get-words #word').val('');
-				refreshWordsList();
+				refreshWordsList(true);
 			}
 			else{
 				alert("You've already entered that word!");
@@ -43,6 +44,7 @@ $(document).ready(function(){
 
 	$('#get-words #finished').on('click', function(){
 		$('#get-words').hide();
+		refreshWordsList(false);
 		generateWordSearch();
 	});
 
@@ -63,6 +65,20 @@ $(document).ready(function(){
 			
 	});
 
+	// Open a printer friendly version of the word search
+	$('#print').on('click', function(){
+		$('#heading-bar').hide();
+		$('#show-secrets').hide();
+		$('#print').hide();
+		$('.secret-word').css({
+	      'color': '#1B325F'
+	    });
+		$('body').css({
+			'background-image' : 'none',
+			'background-color' : '#FFF'
+		});
+	});
+
 	// Show the contact container
 	$('#contact-link').on('click', function(){
 		$('#generator').hide();
@@ -75,11 +91,14 @@ $(document).ready(function(){
 	});
 });
 
-function refreshWordsList(){
+function refreshWordsList(removable){
 	words.sort();
 	var display_list = "";
 	for(var i=0; i<words.length; i++){
-		display_list += '<span class="inserted-word">'+words[i]+'</span>';
+		if(removable)
+			display_list += '<span class="inserted-word">'+words[i]+'</span>';
+		else
+			display_list += words[i];
 		if(i != words.length-1)
 			display_list += ' | ';
 	}
@@ -174,7 +193,7 @@ function hideLetters(){
 }
 
 function displayWordSearch(){
-	var ws_html = "";
+	ws_html = "";
 	for(var i=0; i<n; i++){
 		for(var j=0; j<2*n; j++){
 			ws_html += word_search[i][j];
