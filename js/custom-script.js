@@ -81,7 +81,7 @@ function refreshWordsList(){
 	for(var i=0; i<words.length; i++){
 		display_list += '<span class="inserted-word">'+words[i]+'</span>';
 		if(i != words.length-1)
-			display_list += ' | '
+			display_list += ' | ';
 	}
 		
 	$('#entered-words #words-list').html('<p>'+display_list+'</p>');
