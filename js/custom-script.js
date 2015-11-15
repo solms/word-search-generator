@@ -78,13 +78,23 @@ $(document).ready(function(){
 function refreshWordsList(){
 	var display_list = "";
 	for(var i=0; i<words.length; i++){
-		display_list += words[i];
+		display_list += '<span class="inserted-word">'+words[i]+'</span>';
 		if(i != words.length-1)
 			display_list += ' | '
 	}
 		
 	$('#entered-words #words-list').html('<p>'+display_list+'</p>');
 	$('#entered-words').fadeIn('fast');
+	$('#words-list .inserted-word').on('click', function(){
+		removeWords($(this).text());
+	});
+}
+
+function removeWords(word){
+	var index = words.indexOf(word);
+	if(index > -1)
+		words.splice(index,1);
+	refreshWordsList();
 }
 
 function generateWordSearch(){
