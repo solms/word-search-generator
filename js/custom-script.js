@@ -76,6 +76,7 @@ $(document).ready(function(){
 });
 
 function refreshWordsList(){
+	words.sort();
 	var display_list = "";
 	for(var i=0; i<words.length; i++){
 		display_list += '<span class="inserted-word">'+words[i]+'</span>';
